@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ten Speedy Fingers: Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        body {
+            height: 100vh;
+            font-family: "Fira Code";
+        }
+        section {
+            padding: 3% 10%;
+        }
+
+        .colored-section {
+            background-color: #BCEAD5;
+        }
+
+        .white-section {
+            background-color: #DEF5E5;
+        }
+        .header {
+            padding-top: 2%;
+            line-height: 2rem;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font: 800;
+        }
+
+        .main {
+        }
+
+        .test-text-box {
+            margin: 2% 0%;
+        }
+
+        .text-box-input {
+            padding: 2% 2%;
+            line-height: 2rem;
+            font-size: 1.3rem;
+        }
+
+        .inner-buttons {
+            text-align: center;
+            padding: 2% 0%;
+        }
+
+        .user-text-box {
+            margin: 2% 0%;
+        }
+
+        .footer {
+            padding-top: 1%;
+            padding-bottom: 1%;
+        }
+    </style>
+  </head>
+  <body>
+    <section class="header colored-section">
+        <nav class="navbar navbar-expand-lg " style='background-color: #BCEAD5;'>
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/">Ten Speedy Fingers</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/">> Take a typing test</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="/new_entry">> Ensert New Text Text</a></li>
+                </ul>
+                <span class="navbar-text">
+                  Improve your typing!
+                </span>
+              </div>
+            </div>
+          </nav>
+    </section>
+    <section class="main white-section">
+        {% for history in previous_test_history%}
+            <p>{{ history.test_text }} - {{ history.taken_date }} - {{ history.wpm }} - {{ history.accuracy }}</p>
+        {% endfor %}
+    </section>
+    <section class="footer colored-section">
+        <div class="container">
+            <footer class="py-2 my-1">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item"><a href="/previous_history" class="nav-link px-2 text-muted">Take a new test right now!</a></li>
+                    <li class="nav-item"><a href="/new_entry" class="nav-link px-2 text-muted">Add a new test text.</a></li>
+                </ul>
+                <p class="text-center text-muted">© Fikernew Birhanu, Ten Speedy Fingers</p>
+            </footer>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>

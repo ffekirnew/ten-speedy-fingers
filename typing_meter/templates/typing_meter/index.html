@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ten Speedy Fingers: Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        body {
+            height: 100vh;
+            font-family: "Fira Code";
+        }
+        section {
+            padding: 3% 10%;
+        }
+
+        .colored-section {
+            background-color: #BCEAD5;
+        }
+
+        .white-section {
+            background-color: #DEF5E5;
+        }
+        .header {
+            padding-top: 2%;
+            line-height: 2rem;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font: 800;
+        }
+
+        .main {
+        }
+
+        .test-text-box {
+            margin: 2% 0%;
+        }
+        
+        .text-box-input {
+            border-color: #000000;
+            padding: 2% 2%;
+            line-height: 2rem;
+            font-size: 1.3rem;
+        }
+
+        .inner-buttons {
+            text-align: center;
+            padding: 2% 0%;
+        }
+
+        .user-text-box {
+            margin: 2% 0%;
+        }
+
+        .footer {
+            padding-top: 1%;
+            padding-bottom: 1%;
+        }
+
+        .nav-item:hover {
+            text-decoration: underline;
+        }
+    </style>
+  </head>
+  <body>
+    <section class="header colored-section">
+        <nav class="navbar navbar-expand-lg " style='background-color: #BCEAD5;'>
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Ten Speedy Fingers</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item active"><a class="nav-link" href="/new_entry">> Ensert New Text Text</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/previous_history">> See Typing History</a></li>
+                </ul>
+                <span class="navbar-text">
+                  Improve your typing!
+                </span>
+              </div>
+            </div>
+          </nav>
+    </section>
+    <section class="main white-section">
+        <div class="container test-text-box">
+            <label for="text-text-box">{{ latest_text.title}}</label>
+            <input class="form-control text-box-input" id="test-text-box" type="text" value="{{ latest_text.text }}" aria-label="Test Text Display" style="background-color: #DEF5E5;" disabled readonly>
+        </div>
+        <div class="container inner-buttons">
+            <button type="button" class="btn" style="background-color: #9ED5C5;" disabled><span id="minutes" role = "timer">00</span>:<span id="seconds" role = "timer">00</span></button>
+            <a href="/" type="button" class="btn" style="background-color: #8EC3B0;">Take Another</a>
+        </div>
+        <div class="container user-text-box">
+            <input class="form-control text-box-input" id="user-test-text-box" type="text" aria-label="Typing Text Box" placeholder="Start typing here"  style="background-color: #DEF5E5;">
+        </div>
+    </section>
+    <section class="footer colored-section">
+        <div class="container">
+            <footer class="py-2 my-1">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item"><a href="/previous_history" class="nav-link px-2 text-muted">See your previous performance.</a></li>
+                    <li class="nav-item"><a href="/new_entry" class="nav-link px-2 text-muted">Add a new test text.</a></li>
+                </ul>
+                <p class="text-center text-muted">© Fikernew Birhanu, Ten Speedy Fingers</p>
+            </footer>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+    <script type="text/javascript">
+        var correct = 0, incorrect = 0;
+        var test_text = document.getElementById("test-text-box"), user_text = document.getElementById("user-test-text-box");
+        var test_text_value = test_text.value.split(" ");
+
+        var minutes = document.getElementById("minutes"), seconds = document.getElementById("seconds");
+        var started = false;
+
+        minutes.innerHTML = "00";
+        seconds.innerHTML = "00";
+
+        user_text.addEventListener('keyup', e => {
+            if (e.key === " ")
+            {
+                if (user_text.value === test_text_value[0].concat(" "))
+                    correct += 1;
+                else
+                    incorrect += 1;
+                test_text_value = test_text_value.slice(1);
+                test_text.value = test_text_value.join(" ");
+                user_text.value = '';
+            }
+            user_text.placeholder = '';
+
+        });
+        // test_text.value = "Works";
+        // user_text.value = "Works";
+    </script>
+  </body>
+</html>
